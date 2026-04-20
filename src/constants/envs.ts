@@ -7,6 +7,15 @@ export const APP_VERSION = getEnv('VITE_APP_VERSION', '0.0.0')
 // API / BACKEND SERVER
 export const API_URL = getEnv('VITE_API_BASE_URL', 'http://localhost:8000')
 
+
+// API / PYTHON AI BACKEND SERVER
+export const FACE_RECOGNITION_API_URL = getEnv(
+    'VITE_FACE_RECOGNITION_API_URL',
+    'http://localhost:8000'
+)
+
+
+
 // WS (Soketi)
 export const SOKETI_KEY = getEnv(
     'VITE_SOKETI_KEY',
