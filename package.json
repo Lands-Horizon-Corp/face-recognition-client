@@ -5,12 +5,28 @@
   "imports": {
     "#/*": "./src/*"
   },
-  "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "vitest run"
-  },
+   "scripts": {
+        "start": "bun run .output/server/index.mjs",
+        "dev": "vite --port 3000 --host",
+        "test": "vitest run .",
+        "testw": "vitest",
+        "lint": "eslint .",
+        "lf": "eslint .",
+        "preview": "vite preview --port $PORT --host",
+        "pwa-test": "bun run build && bun run preview",
+        "fc": "prettier . -c",
+        "fcf": "prettier -c",
+        "fw": "prettier . -w",
+        "fwf": "prettier -w",
+        "el": "eslint .",
+        "elf": "eslint . --fix",
+        "fmt": "eslint . --fix && prettier . -w",
+        "build": "tsc -b && bun --bun vite build",
+        "vc": "eslint . && prettier . -c && vitest run && tsc -b --verbose && vite build",
+        "dick": "bun run fmt && bun run vc",
+        "gen-mod": "bunx plop module-gen",
+        "unused": "knip"
+    },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
