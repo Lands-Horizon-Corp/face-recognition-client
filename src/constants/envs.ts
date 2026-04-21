@@ -11,7 +11,7 @@ export const API_URL = getEnv('VITE_API_BASE_URL', 'http://localhost:8000')
 // API / PYTHON AI BACKEND SERVER
 export const FACE_RECOGNITION_API_URL = getEnv(
     'VITE_FACE_RECOGNITION_API_URL',
-    'http://localhost:8000'
+    'http://localhost:8080'
 )
 
 

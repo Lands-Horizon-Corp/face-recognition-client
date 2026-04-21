@@ -1,6 +1,6 @@
-import { downloadFile } from '@/helpers'
+// import { downloadFile } from '@/helpers'
 
-import { IMedia } from '.'
+import type { IMedia } from '.'
 
 export const formatBytes = (bytes: number) => {
     if (bytes === 0) return '0 Bytes'
@@ -290,16 +290,16 @@ export const getFileType = (file: File): FileCategory => {
 
 export type TDownloadMediaProp = File | string | IMedia
 
-export const downloadMedia = (media: TDownloadMediaProp) => {
-    if (!(media instanceof File) && typeof media !== 'string') {
-        downloadFile(media.download_url, media.file_name || 'download')
-    } else if (media) {
-        // Download blob for local files
-        const link = document.createElement('a')
-        link.href = media instanceof File ? URL.createObjectURL(media) : media
-        link.download = media instanceof File ? media.name : 'download'
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-    }
-}
+// export const downloadMedia = (media: TDownloadMediaProp) => {
+//     if (!(media instanceof File) && typeof media !== 'string') {
+//         downloadFile(media.download_url, media.file_name || 'download')
+//     } else if (media) {
+//         // Download blob for local files
+//         const link = document.createElement('a')
+//         link.href = media instanceof File ? URL.createObjectURL(media) : media
+//         link.download = media instanceof File ? media.name : 'download'
+//         document.body.appendChild(link)
+//         link.click()
+//         document.body.removeChild(link)
+//     }
+// }

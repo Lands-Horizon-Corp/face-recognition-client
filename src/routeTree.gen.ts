@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AboutRouteImport } from './routes/about'
+import { Route as IdentifyFaceRouteImport } from './routes/identify-face'
+import { Route as AddFaceRouteImport } from './routes/add-face'
 import { Route as IndexRouteImport } from './routes/index'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
+const IdentifyFaceRoute = IdentifyFaceRouteImport.update({
+  id: '/identify-face',
+  path: '/identify-face',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AddFaceRoute = AddFaceRouteImport.update({
+  id: '/add-face',
+  path: '/add-face',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +31,48 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/add-face': typeof AddFaceRoute
+  '/identify-face': typeof IdentifyFaceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/add-face': typeof AddFaceRoute
+  '/identify-face': typeof IdentifyFaceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
+  '/add-face': typeof AddFaceRoute
+  '/identify-face': typeof IdentifyFaceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/add-face' | '/identify-face'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/add-face' | '/identify-face'
+  id: '__root__' | '/' | '/add-face' | '/identify-face'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
+  AddFaceRoute: typeof AddFaceRoute
+  IdentifyFaceRoute: typeof IdentifyFaceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/identify-face': {
+      id: '/identify-face'
+      path: '/identify-face'
+      fullPath: '/identify-face'
+      preLoaderRoute: typeof IdentifyFaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/add-face': {
+      id: '/add-face'
+      path: '/add-face'
+      fullPath: '/add-face'
+      preLoaderRoute: typeof AddFaceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,7 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
+  AddFaceRoute: AddFaceRoute,
+  IdentifyFaceRoute: IdentifyFaceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
