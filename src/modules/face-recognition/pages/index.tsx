@@ -129,9 +129,15 @@ export default function FaceRecognitionPage() {
 
 function RecievedContent({addFaceData, identifyFaceData}: {addFaceData: unknown; identifyFaceData: unknown}) {
   return (
-    <div className=" flex items-center justify-center">
+    <div className=" items-center justify-center">
       <div className=" p-4 rounded">
-        <p>{addFaceData ? JSON.stringify(addFaceData) : identifyFaceData ? JSON.stringify(identifyFaceData) : "No data available"}</p>
+        <h1>add face result</h1>
+        <p>{addFaceData ? JSON.stringify(addFaceData) : "No data available"}</p>
+      </div>
+
+      <div className="p-4 rounded">
+        <h1>identify face result</h1>
+        <p>{identifyFaceData ? JSON.stringify(identifyFaceData) : "No data available"}</p>
       </div>
     </div>
   )
