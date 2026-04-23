@@ -58,3 +58,15 @@ export const MONTH_NAMES = [
     'November',
     'December',
 ]
+
+export const HTTP_STATUS = {
+    OK: 200,
+    OK_NO_CONTENT: 204,
+    CREATED: 201,
+    PAYMENT_REQUIRED: 402,
+    BAD_REQUEST: 400,
+    UNAUTHORIZED: 401,
+    SERVER_ERROR: 500,
+    TOO_MANY_REQUESTS: 429,
+    FORBIDDEN: 403,
+} as const
