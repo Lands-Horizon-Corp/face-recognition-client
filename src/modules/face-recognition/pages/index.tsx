@@ -6,9 +6,10 @@ import { Button } from "#/components/ui/button"
 import {useAddFace, useIdentifyFace} from "./../face-recognition.service"
 import { cn } from "#/lib/utils"
 import { toast } from 'sonner'
-import type { IAddFaceRequest } from "../face-recognition.types"
+import type { IAddFaceRequest, IFaceErrorMessage, IIdentity } from "../face-recognition.types"
 import { Input } from "#/components/ui/input"
 import { DIRECTIONS } from "../face-recognition.constants"
+
 type RecognitionState = "identify" | "add"
 
 export default function FaceRecognitionPage() {
@@ -51,11 +52,17 @@ export default function FaceRecognitionPage() {
         }), {
           loading: "Adding face...",
           success: "Face added successfully!",
-          error: "Failed to add face. Please try again."
-        })
-      }
+          error: (error:unknown) => {
+            if (error instanceof Error) {
+              return `Failed to add face: ${error.message}`
+          }
+        }
+      })
+    }
+  })
 
-    })
+    
+  
   }
 
   return (
@@ -127,7 +134,10 @@ export default function FaceRecognitionPage() {
 } 
 
 
-function RecievedContent({addFaceData, identifyFaceData}: {addFaceData: unknown; identifyFaceData: unknown}) {
+function RecievedContent({addFaceData, identifyFaceData}: {
+    addFaceData: {id:string, 
+      error?: IFaceErrorMessage } | undefined; 
+  identifyFaceData: IIdentity | undefined}) {
   return (
     <div className=" items-center justify-center">
       <div className=" p-4 rounded">
