@@ -59,12 +59,9 @@ export default function FaceRecognitionPage() {
           }
         }
       })
+      }
     }
-  })
 
-    
-  
-  }
 
   return (
     <main className="h-screen flex flex-col items-center  gap-4">  
