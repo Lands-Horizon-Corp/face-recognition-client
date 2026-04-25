@@ -75,14 +75,14 @@ export default function FaceRecognitionPage() {
       <Webcam
         audio={false}
         className="absolute inset-0 h-full w-full object-cover scale-110"
-        minScreenshotHeight={500}
-        minScreenshotWidth={500}
+        minScreenshotHeight={224}
+        minScreenshotWidth={224}
         ref={camRef}
         screenshotFormat="image/jpeg"
         videoConstraints={{ 
           facingMode: 'user',
-          width: { ideal: 500 },
-          height: { ideal: 500 }, }}
+          width: { ideal: 224 },
+          height: { ideal: 224 }, }}
           />
         </div>
 
