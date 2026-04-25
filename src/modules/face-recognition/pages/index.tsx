@@ -60,6 +60,10 @@ export default function FaceRecognitionPage() {
         }
       })
     }
+  })
+
+    
+  
   }
 
   return (
